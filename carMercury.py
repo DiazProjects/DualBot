@@ -11,12 +11,12 @@ app = Flask(__name__)
 GPIO.setmode(GPIO.BCM)
                                                                                 #--Aqui se declaran los pines utilizados como referencia para controlar el robot--#
 pins = {
-    4 : {'name' : '30 cm', 'state' : GPIO.LOW},
-    5 : {'name' : '50 cm', 'state' : GPIO.LOW},
-    17 : {'name' : 'Back', 'state' : GPIO.LOW},
-    22 : {'name' : 'Right >>', 'state' : GPIO.LOW},
-    27 : {'name' : '<< Left', 'state' : GPIO.LOW},
-    12 : {'name' : 'LED', 'state' : GPIO.LOW}
+    5 : {'name' : '30 cm', 'state' : GPIO.LOW},
+    12 : {'name' : '50 cm', 'state' : GPIO.LOW},
+    27 : {'name' : 'Back', 'state' : GPIO.LOW},
+    17 : {'name' : 'Right >>', 'state' : GPIO.LOW},
+    22 : {'name' : '<< Left', 'state' : GPIO.LOW},
+    4 : {'name' : 'LED', 'state' : GPIO.LOW}
    }
                                                                                 #--Aqui inicializo todos los pines a utilizar--#
 for pin in pins:
