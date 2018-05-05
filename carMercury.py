@@ -149,11 +149,11 @@ def action(changePin, action):
             message = "You moved to the " + deviceName
         elif (deviceName == "LED"):                                             #--Enciendo un led--#
             GPIO.output(changePin, GPIO.HIGH)
-            GPIO.output(12, GPIO.HIGH)
+            GPIO.output(4, GPIO.HIGH)
             message = "Encendio " + deviceName
     if action == "off":                                                         #--Apago especificamente el led que encendi--#
         GPIO.output(changePin, GPIO.LOW)
-        GPIO.output(12, GPIO.LOW)
+        GPIO.output(4, GPIO.LOW)
         message = "Unemployed"
     if action == "toggle":
         GPIO.output(changePin,not GPIO.input(changePin))
