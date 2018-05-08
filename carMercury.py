@@ -11,42 +11,42 @@ app = Flask(__name__)
 GPIO.setmode(GPIO.BCM)
                                                                                 #--Aqui se declaran los pines utilizados como referencia para controlar el robot--#
 pins = {
-    5 : {'name' : '30 cm', 'state' : GPIO.LOW},
-    12 : {'name' : '50 cm', 'state' : GPIO.LOW},
-    27 : {'name' : 'Back', 'state' : GPIO.LOW},
-    17 : {'name' : 'Right >>', 'state' : GPIO.LOW},
-    22 : {'name' : '<< Left', 'state' : GPIO.LOW},
-    4 : {'name' : 'LED', 'state' : GPIO.LOW}
+    18 : {'name' : '30 cm', 'state' : GPIO.LOW},
+    23 : {'name' : '50 cm', 'state' : GPIO.LOW},
+    24 : {'name' : 'Back', 'state' : GPIO.LOW},
+    25 : {'name' : 'Right >>', 'state' : GPIO.LOW},
+    26 : {'name' : '<< Left', 'state' : GPIO.LOW},
+    12 : {'name' : 'LED', 'state' : GPIO.LOW}
    }
                                                                                 #--Aqui inicializo todos los pines a utilizar--#
 for pin in pins:
                                                                                 #--Pines de Referencia--#
-    GPIO.setup(17, GPIO.OUT)
-    GPIO.output(17, GPIO.LOW)
-    GPIO.setup(22, GPIO.OUT)
-    GPIO.output(22, GPIO.LOW)
-    GPIO.setup(27, GPIO.OUT)
-    GPIO.output(27, GPIO.LOW)
-    GPIO.setup(4, GPIO.OUT)
-    GPIO.output(4, GPIO.LOW)
-    GPIO.setup(5, GPIO.OUT)
-    GPIO.output(5, GPIO.LOW)
-    GPIO.setup(12, GPIO.OUT)
-    GPIO.output(12, GPIO.LOW)
-                                                                                #--Pines PWM--#
-    GPIO.setup(13, GPIO.OUT)
-    GPIO.output(13, GPIO.LOW)
+    GPIO.setup(18, GPIO.OUT)
+    GPIO.output(18, GPIO.LOW)
     GPIO.setup(23, GPIO.OUT)
     GPIO.output(23, GPIO.LOW)
     GPIO.setup(24, GPIO.OUT)
     GPIO.output(24, GPIO.LOW)
     GPIO.setup(25, GPIO.OUT)
     GPIO.output(25, GPIO.LOW)
+    GPIO.setup(26, GPIO.OUT)
+    GPIO.output(26, GPIO.LOW)
+    GPIO.setup(12, GPIO.OUT)
+    GPIO.output(12, GPIO.LOW)
+                                                                                #--Pines PWM--#
+    GPIO.setup(4, GPIO.OUT)
+    GPIO.output(4, GPIO.LOW)
+    GPIO.setup(17, GPIO.OUT)
+    GPIO.output(17, GPIO.LOW)
+    GPIO.setup(27, GPIO.OUT)
+    GPIO.output(27, GPIO.LOW)
+    GPIO.setup(22, GPIO.OUT)
+    GPIO.output(22, GPIO.LOW)
                                                                                 #--Aqui definimos los pines PWM a usar--#
-pwm1 = GPIO.PWM(13,100)
-pwm2 = GPIO.PWM(23,100)
-pwm3 = GPIO.PWM(24,100)
-pwm4 = GPIO.PWM(25,100)
+pwm1 = GPIO.PWM(4,100)
+pwm2 = GPIO.PWM(17,100)
+pwm3 = GPIO.PWM(27,100)
+pwm4 = GPIO.PWM(22,100)
 #-------------------------------------------------------------------------------Deficiones (DEF)
 @app.route("/")
 def main():
@@ -149,11 +149,11 @@ def action(changePin, action):
             message = "You moved to the " + deviceName
         elif (deviceName == "LED"):                                             #--Enciendo un led--#
             GPIO.output(changePin, GPIO.HIGH)
-            GPIO.output(4, GPIO.HIGH)
+            GPIO.output(12, GPIO.HIGH)
             message = "Encendio " + deviceName
     if action == "off":                                                         #--Apago especificamente el led que encendi--#
         GPIO.output(changePin, GPIO.LOW)
-        GPIO.output(4, GPIO.LOW)
+        GPIO.output(12, GPIO.LOW)
         message = "Unemployed"
     if action == "toggle":
         GPIO.output(changePin,not GPIO.input(changePin))
